@@ -27,6 +27,14 @@ public class SEnemyBullet : MonoBehaviour
         else if (collision.tag == "BalaJugador") // Choca con la bala del jugador
         {
             Destroy(this.gameObject); // Se destruye a bala
+            Destroy(collision.gameObject);
+        }
+
+        else if (collision.tag == "Jugador") // Choca con el jugador
+        {
+            // GameManager.instance.dañojugador p.ej.
+            Destroy(this.gameObject); // Se destruye a bala
+            Destroy(collision.gameObject);
         }
     }
 }

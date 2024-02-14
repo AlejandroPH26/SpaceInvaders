@@ -2,9 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerBullet : MonoBehaviour
+public class SPlayerBullet : MonoBehaviour
 {
     public float velocidad = 1;
+    public SPlayer player = null;
 
     // Start is called before the first frame update
     void Start()
@@ -24,17 +25,12 @@ public class PlayerBullet : MonoBehaviour
         {
             Destroy(this.gameObject); // Se destruye a bala
         }
-
-        else if (collision.tag == "BalaEnemigo") // Choca con la bala enemiga
-        {
-            Destroy(this.gameObject); // Se destruye a bala
-        }
     }
 
     private void OnDestroy()
     {
         Debug.Log("Bala destruida");
-        SPlayer.canShoot = true;
+        player.canShoot = true;
         // El jugador puede volver a disparar
         // player.canshoot = true
     }

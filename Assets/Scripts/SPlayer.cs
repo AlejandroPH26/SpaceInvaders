@@ -15,7 +15,10 @@ public class SPlayer : MonoBehaviour
 
     public Transform posDisparo;
 
-    static public bool canShoot = true;
+    public bool canShoot = true;
+
+    private float limiteIzquierdo = -3.24f;
+    private float limiteDerecho = 3.15f;
 
     // Start is called before the first frame update
     void Start()
@@ -26,6 +29,7 @@ public class SPlayer : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
         if (canShoot && Input.GetKeyDown(shootKey))
         {
             Shoot();
@@ -33,19 +37,38 @@ public class SPlayer : MonoBehaviour
         else if (Input.GetKey(moveLeftKey))
         {
             transform.position += new Vector3(-velocidad, 0, 0) * Time.deltaTime;
+            LimiteJugador();
         }
         else if (Input.GetKey(moveRightKey))
         {
             transform.position += new Vector3(velocidad, 0, 0) * Time.deltaTime;
+            LimiteJugador();
         }
+
     }
 
     private void Shoot()
     {
         Debug.Log("Disparo");
-        Instantiate(prefabBullet, posDisparo.position, Quaternion.identity);
+        GameObject aux = Instantiate(prefabBullet, posDisparo.position, Quaternion.identity);
+        SPlayerBullet bullet = aux.GetComponent<SPlayerBullet>();
+        bullet.player = this;
         canShoot = false;
     }
 
-    
+    private void LimiteJugador()
+    {
+        Vector3 posicionActual = transform.position;
+
+        if (posicionActual.x < limiteIzquierdo)
+        {
+            posicionActual.x = limiteIzquierdo;
+        }
+        else if (posicionActual.x > limiteDerecho)
+        {
+            posicionActual.x = limiteDerecho;
+        }
+
+        gameObject.transform.position = posicionActual;
+    }
 }
