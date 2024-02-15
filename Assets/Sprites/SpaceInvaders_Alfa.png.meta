@@ -186,7 +186,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SpaceInvaders_Alfa_3
+      name: Alien_Explosion
       rect:
         serializedVersion: 2
         x: 56
@@ -727,6 +727,7 @@ TextureImporter:
       Alien_2_2: -932148963
       Alien_3_1: -1248212535
       Alien_3_2: -1062151257
+      Alien_Explosion: 591671084
       Player_1: 759403865
       Player_2: 1889199168
       Player_3: 951373626
@@ -745,7 +746,6 @@ TextureImporter:
       SpaceInvaders_Alfa_21: 1965875098
       SpaceInvaders_Alfa_22: 1941271464
       SpaceInvaders_Alfa_27: 1889199168
-      SpaceInvaders_Alfa_3: -1512747405
       SpaceInvaders_Alfa_7: -1062151257
       SpaceInvaders_Alfa_8: -1226867337
       SpaceInvaders_Alfa_9: -1589142944

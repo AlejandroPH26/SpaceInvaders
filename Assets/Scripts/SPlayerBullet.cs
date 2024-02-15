@@ -25,6 +25,12 @@ public class SPlayerBullet : MonoBehaviour
         {
             Destroy(this.gameObject); // Se destruye a bala
         }
+
+        else if (collision.tag == "Enemigo") // Choca con el enemigo
+        {
+            Destroy(this.gameObject); // Se destruye a bala
+            Destroy(collision.gameObject);
+        }
     }
 
     private void OnDestroy()

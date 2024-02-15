@@ -36,5 +36,7 @@ public class SEnemyBullet : MonoBehaviour
             Destroy(this.gameObject); // Se destruye a bala
             Destroy(collision.gameObject);
         }
+
+        
     }
 }
