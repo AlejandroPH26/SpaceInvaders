@@ -4,6 +4,8 @@
 AnimatorState:
   serializedVersion: 6
   m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: Anim_Alien_1
   m_Speed: 0.2
