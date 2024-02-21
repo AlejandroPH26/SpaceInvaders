@@ -5,30 +5,87 @@ using UnityEngine;
 public class BuclesAnidados : MonoBehaviour
 {
     public int[,] listaNumeros;
-    public List<int> listaDinamicaNumeros;
 
     int n = 1;
 
     // Start is called before the first frame update
     void Start()
     {
-        listaNumeros = new int[10, 10];
-        Debug.Log(listaNumeros.Length);
+        //int[,] tabla = CreaTablaMultiplicar(5, 10);
 
-        for (int i = 0;i < listaNumeros.GetLength(0) ; i++)
+        //DibujaMatriz(tabla);
+
+        //DibujaMatriz(CreaTablaMultiplicar(2, 20));
+
+        DibujaMatriz(CreaTablaNPrimerosNumeros(8, 10));
+
+        ApareceNEnTabla(CreaTablaNPrimerosNumeros(5, 10), 40);
+        ApareceNEnTabla(CreaTablaNPrimerosNumeros(5, 10), -40);
+
+        ApareceNEnTabla(CreaTablaMultiplicar(10, 10), 10);
+    }
+
+    public bool ApareceNEnTabla(int[,] tabla, int nBuscar)
+    {
+        bool encontrado = false;
+
+        // Recorrer tabla
+        for (int i = 0; i < tabla.GetLength(0); i++)
         {
-            string tablaDeI = "Esta es latabla de " + (i+1).ToString() + " ";
-            for (int j = 0;j < listaNumeros.GetLength(1); j++)
+            for(int j = 0; j < tabla.GetLength(1); j++)
+            {
+                if (tabla[i,j] == nBuscar) // Compruebo si cada celda vale nBuscar
+                {
+                    // Si encuentro el numero, saco un mensaje y pongo encontrado a true
+                    Debug.Log("El numero " + nBuscar + " está en la tabla");
+                    encontrado = true;
+                    return encontrado;
+                }
+            }
+        }
+
+        return encontrado;
+    }
+
+    // Crea y devuelve una matriz de col * row con los N primeros numeros naturales (N = col * row)
+    public int[,] CreaTablaNPrimerosNumeros(int ancho, int alto)
+    {
+        int[,] tabla = new int[ancho, alto];
+        int contador = 0;
+
+        for(int i = 0; i < ancho;i++)
+        {
+            for(int j = 0; j < alto; j++)
+            {
+                tabla[i, j] = contador; // Asignar a la casilla valores 0,1,2,3,4 ... N
+                contador++;
+
+                //tabla[i, j] = i * alto + j; // Asigno su valor a la casilla
+            }
+        }
+
+        return tabla;
+    }
+
+    // Crea y devuelve una matriz de col * row con las tablas de multiplicar
+    public int[,] CreaTablaMultiplicar(int col, int row)
+    {
+        int[,] tablaMultiplicar = new int[col, row];                                // Creo la matriz/tabla de col * row
+
+        for (int i = 0; i < tablaMultiplicar.GetLength(0); i++)                     // Recorro el ancho (columnas)
+        {
+            // string tablaDeI = "Esta es latabla de " + (i + 1).ToString() + " ";
+            for (int j = 0; j < tablaMultiplicar.GetLength(1); j++)                 // Recorro el alto (filas)
             {
                 //listaNumeros[i,j] = (i+1)*(j+1);
-                listaNumeros[i, j] = n;
-                tablaDeI += listaNumeros[i,j].ToString() + " ";
-                //Debug.Log(listaNumeros[i,j]);
-                n++;
+                tablaMultiplicar[i, j] = (i+1) * (j+1);                             // Doy un valor a cada casilla
+                //tablaDeI += tablaMultiplicar[i, j].ToString() + " ";
+
             }
             //Debug.Log(tablaDeI);
         }
-        DibujaMatriz(listaNumeros);
+
+        return tablaMultiplicar;                                                    // Devuelvo la matriz entera
     }
 
     public void DibujaMatriz(int[,] matriz)
