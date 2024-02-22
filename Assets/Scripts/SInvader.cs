@@ -7,6 +7,8 @@ public class SInvader : MonoBehaviour
     public GameObject particulaMuerte;
     public bool isQuitting = false;
 
+    public SInvaderMovement padre;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -17,6 +19,15 @@ public class SInvader : MonoBehaviour
     void Update()
     {
         
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if(collision.tag == "Borde") // Choca con el borde de la pantala
+        {
+            // Llamar a SwitchDirection para que se gire el padre
+            padre.SwitchDirection();
+        }
     }
 
     private void OnApplicationQuit() // Se llama al cerrar la aplicación, antes del OnDestroy

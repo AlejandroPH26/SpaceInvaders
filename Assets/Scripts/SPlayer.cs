@@ -17,8 +17,8 @@ public class SPlayer : MonoBehaviour
 
     public bool canShoot = true;
 
-    private float limiteIzquierdo = -3.24f;
-    private float limiteDerecho = 3.15f;
+    public float limiteIzquierdo = -6.22f;
+    public float limiteDerecho = 6.11f;
 
     // Start is called before the first frame update
     void Start()
