@@ -8,6 +8,7 @@ public class SInvader : MonoBehaviour
     public bool isQuitting = false;
 
     public SInvaderMovement padre;
+    public GameObject invaderBullet;
 
     // Start is called before the first frame update
     void Start()
@@ -19,6 +20,11 @@ public class SInvader : MonoBehaviour
     void Update()
     {
         
+    }
+
+    public void Shoot() // El alien dispara una bala
+    {
+        Instantiate(invaderBullet, transform.position, Quaternion.identity);
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

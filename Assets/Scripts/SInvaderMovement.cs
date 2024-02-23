@@ -8,6 +8,10 @@ public class SInvaderMovement : MonoBehaviour
     public float despAbajo = 1f;    // Distancia que baja al cambiar de dirección
     private float dir = 1;
 
+    public bool canSwitch = true;   // Bool que indica si puede girarse
+    public float switchDelay = 0.5f;// Tiempo que debe pasar despues de girar, para poder volver a hacerlo
+
+
     // Start is called before the first frame update
     void Start()
     {
@@ -27,8 +31,23 @@ public class SInvaderMovement : MonoBehaviour
 
     public void SwitchDirection()
     {
-        dir *= -1;                                              // Invierto la dirección
-        transform.position += new Vector3(0, -despAbajo, 0);    // Desplazo hacia abajo
+        if(canSwitch)
+        {
+            dir *= -1;                                              // Invierto la dirección
+            transform.position += new Vector3(0, -despAbajo, 0);    // Desplazo hacia abajo
+            canSwitch = false;
+            Invoke("SwitchEnable", switchDelay);
+        }
+    }
 
+    public void SwitchEnable()
+    {
+        canSwitch = true;
     }
 }
+
+    /*
+     * 1 - Despues de girar, pongo canswitch a false
+     * 2 - Crear una funcion que ponga canswitch a true
+     * 3 - A la vez que pongo canswitch a false, hago invoke del método que cree antes, con tiempo switchdelay 
+     */

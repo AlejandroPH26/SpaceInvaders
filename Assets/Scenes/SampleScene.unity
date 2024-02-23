@@ -919,8 +919,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5cd202c7cf5481b4f8600a7d1ef42cd3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 1
+  speed: 0.5
   despAbajo: 1
+  canSwitch: 1
+  switchDelay: 0.5
 --- !u!1 &1354223455
 GameObject:
   m_ObjectHideFlags: 0
@@ -1269,7 +1271,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 639711804156110439, guid: 20d02ef60957c6243b85b352aebc4cb3, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8511208133723030884, guid: 20d02ef60957c6243b85b352aebc4cb3, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1370,7 +1372,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6361368610113691948, guid: 1d0ff33fc37138842813e6e96e1c49e4, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1391,7 +1393,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3018607866909835543, guid: b77fefbe1f6791c4aabc9151d5b15eac, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7572415979829732893, guid: b77fefbe1f6791c4aabc9151d5b15eac, type: 3}
       propertyPath: m_LocalPosition.x
