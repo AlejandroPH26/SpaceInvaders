@@ -19,7 +19,7 @@ public class SGameManager : MonoBehaviour
     // Distancia entre aliens al spawnear
     public float distanciaAliens = 1;
 
-
+    public float tiempoEntreDisparos = 2f;
     // Start is called before the first frame update
     void Start()
     {
@@ -27,6 +27,8 @@ public class SGameManager : MonoBehaviour
         // - INICIALIZACIÓN
         matrizAliens = new SInvader[nColumnas, nFilas]; 
         SpawnAliens();
+
+        InvokeRepeating("SelectAlienShoot", tiempoEntreDisparos, tiempoEntreDisparos);
     }
 
     void SpawnAliens()
@@ -55,6 +57,33 @@ public class SGameManager : MonoBehaviour
         }
         
 
+    }
+
+    // Busca el alien más cercano al jugador en una columna aleatoria y le dice que dispare
+    private void SelectAlienShoot()
+    {
+        // Variable de control de la busqueda. Cuando esta a true ya he encontrado al alien y paro.
+        bool encontrado = false;
+
+        while (!encontrado) // Se repite con columnas aleaorias hasta encontrar un alien
+        {
+            // Elegir una columna aleatoria que no esté vacia
+            int randomCol = Random.Range(0, nColumnas); // Columna aleatoria
+
+            // Buscar al alie mas cercano al jugador en esa columna (el que este más abajo)
+            // En este for tenemos dos condiciones: Que j > -1 y que encontrado == false
+            // Como usamos && entre ellas (AND), deben cumplirse las dos, o salimos del bucle for
+            for(int j = 0; j < nFilas && !encontrado; j++) // Recorrer la columna aleatoria
+            {
+                // Compruebo si el alien existe (no se ha destruido)
+                if(matrizAliens[randomCol, j] != null) // Si la casilla no está vacia (null) el alien sigue vivo
+                {
+                    // Si encuentro un alien vivo, es el mas cercano de la columna al jugador porque la estoy recorriendo de abajo a arriba
+                    matrizAliens[randomCol, j].Shoot(); // El alien dispara
+                    encontrado = true; // He acabado la busqueda
+                }
+            }
+        }
     }
 
     // Update is called once per frame

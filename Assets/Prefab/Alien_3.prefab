@@ -166,3 +166,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   particulaMuerte: {fileID: 8377549944096713532, guid: 0ae6b33f2bee0a94ea16588f666f6a38, type: 3}
+  isQuitting: 0
+  padre: {fileID: 0}
+  invaderBullet: {fileID: 1972463785349495621, guid: e9b0e7456f4e11849bb4070e736f9c0a, type: 3}
+  bulletSpawnYOffset: -0.65

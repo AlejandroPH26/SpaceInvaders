@@ -270,7 +270,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SpaceInvaders_Alfa_7
+      name: Bullet1_1
       rect:
         serializedVersion: 2
         x: 1
@@ -291,7 +291,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SpaceInvaders_Alfa_8
+      name: Bullet1_2
       rect:
         serializedVersion: 2
         x: 6
@@ -312,7 +312,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SpaceInvaders_Alfa_9
+      name: Bullet1_3
       rect:
         serializedVersion: 2
         x: 11
@@ -333,7 +333,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SpaceInvaders_Alfa_10
+      name: Bullet1_4
       rect:
         serializedVersion: 2
         x: 16
@@ -354,7 +354,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SpaceInvaders_Alfa_11
+      name: Bullet2_1
       rect:
         serializedVersion: 2
         x: 21
@@ -375,7 +375,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SpaceInvaders_Alfa_12
+      name: Bullet2_2
       rect:
         serializedVersion: 2
         x: 26
@@ -396,7 +396,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SpaceInvaders_Alfa_13
+      name: Bullet2_3
       rect:
         serializedVersion: 2
         x: 31
@@ -417,7 +417,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SpaceInvaders_Alfa_14
+      name: Bullet2_4
       rect:
         serializedVersion: 2
         x: 36
@@ -438,7 +438,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SpaceInvaders_Alfa_15
+      name: Bullet3_1
       rect:
         serializedVersion: 2
         x: 41
@@ -459,7 +459,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SpaceInvaders_Alfa_16
+      name: Bullet3_2
       rect:
         serializedVersion: 2
         x: 46
@@ -480,7 +480,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SpaceInvaders_Alfa_17
+      name: Bullet3_3
       rect:
         serializedVersion: 2
         x: 51
@@ -501,7 +501,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SpaceInvaders_Alfa_18
+      name: Bullet3_4
       rect:
         serializedVersion: 2
         x: 56
@@ -522,7 +522,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SpaceInvaders_Alfa_19
+      name: BulletExplosion
       rect:
         serializedVersion: 2
         x: 61
@@ -728,27 +728,27 @@ TextureImporter:
       Alien_3_1: -1248212535
       Alien_3_2: -1062151257
       Alien_Explosion: 591671084
+      Bullet1_1: 1235875755
+      Bullet1_2: 1765417389
+      Bullet1_3: -1218110976
+      Bullet1_4: -175490121
+      Bullet2_1: -1718204436
+      Bullet2_2: 887446106
+      Bullet2_3: -1607659550
+      Bullet2_4: 1809385878
+      Bullet3_1: 1234390723
+      Bullet3_2: 1419494028
+      Bullet3_3: -1820781825
+      Bullet3_4: 1965875098
+      BulletExplosion: 1941271464
       Player_1: 759403865
       Player_2: 1889199168
       Player_3: 951373626
       Player_Bullet: 821122190
-      SpaceInvaders_Alfa_10: 1235875755
-      SpaceInvaders_Alfa_11: 1765417389
-      SpaceInvaders_Alfa_12: -1218110976
-      SpaceInvaders_Alfa_13: -175490121
-      SpaceInvaders_Alfa_14: -1718204436
-      SpaceInvaders_Alfa_15: 887446106
-      SpaceInvaders_Alfa_16: -1607659550
-      SpaceInvaders_Alfa_17: 1809385878
-      SpaceInvaders_Alfa_18: 1234390723
-      SpaceInvaders_Alfa_19: 1419494028
       SpaceInvaders_Alfa_20: -1820781825
       SpaceInvaders_Alfa_21: 1965875098
       SpaceInvaders_Alfa_22: 1941271464
       SpaceInvaders_Alfa_27: 1889199168
-      SpaceInvaders_Alfa_7: -1062151257
-      SpaceInvaders_Alfa_8: -1226867337
-      SpaceInvaders_Alfa_9: -1589142944
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

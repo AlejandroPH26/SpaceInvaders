@@ -10,6 +10,8 @@ public class SInvader : MonoBehaviour
     public SInvaderMovement padre;
     public GameObject invaderBullet;
 
+    public float bulletSpawnYOffset = -0.65f;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -24,7 +26,8 @@ public class SInvader : MonoBehaviour
 
     public void Shoot() // El alien dispara una bala
     {
-        Instantiate(invaderBullet, transform.position, Quaternion.identity);
+        Vector3 aux = transform.position + new Vector3(0, bulletSpawnYOffset, 0); // Modificar posición spawn
+        Instantiate(invaderBullet, aux, Quaternion.identity); // Spawnear la bala
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
