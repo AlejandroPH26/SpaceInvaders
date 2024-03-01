@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 4091050036914328478}
   - component: {fileID: 2808852584407217529}
   - component: {fileID: 6207358630762180976}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Alien_1
   m_TagString: Enemigo
   m_Icon: {fileID: 0}

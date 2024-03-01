@@ -32,8 +32,8 @@ public class SPlayerBullet : MonoBehaviour
         else if (collision.tag == "Enemigo") // Choca con el enemigo
         {
             Destroy(this.gameObject); // Se destruye a bala
-            Destroy(collision.gameObject);
-            Instantiate(bulletExplosion, transform.position, Quaternion.identity); // Crea efecto de explosión de bala
+            Destroy(collision.gameObject); // Destruyo el aien
+            SGameManager.instance.AlienDestroyed();
         }
 
         else if (collision.tag == "Barrera") // Choca con un componente barrera

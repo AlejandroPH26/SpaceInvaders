@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.SearchService;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class SGameManager : MonoBehaviour
 {
@@ -26,6 +28,8 @@ public class SGameManager : MonoBehaviour
     public int vidas = 3;
     // Puntuacion actual de jugador
     public int score = 0;
+    // Nº de aliens derrotados
+    private int defeatedAliens = 0;
 
     // SINGLETON
     public static SGameManager instance = null;
@@ -44,7 +48,7 @@ public class SGameManager : MonoBehaviour
         matrizAliens = new SInvader[nColumnas, nFilas]; 
         SpawnAliens();
 
-        InvokeRepeating("SelectAlienShoot", tiempoEntreDisparos, tiempoEntreDisparos);
+        InvokeRepeating("SelectAlienShoot", tiempoEntreDisparos, tiempoEntreDisparos);      
     }
 
     void SpawnAliens()
@@ -78,6 +82,7 @@ public class SGameManager : MonoBehaviour
     // Busca el alien más cercano al jugador en una columna aleatoria y le dice que dispare
     private void SelectAlienShoot()
     {
+
         // Variable de control de la busqueda. Cuando esta a true ya he encontrado al alien y paro.
         bool encontrado = false;
 
@@ -106,12 +111,14 @@ public class SGameManager : MonoBehaviour
     public void PlayerGameOver()
     {
         gameOver = true;
+        CancelInvoke(); // Interrumpimos todos lo invokes de este componente (se deja de disparar)
         Debug.Log("El jugador ha perdido");
     }
 
     public void PlayerWin()
     {
         gameOver = true;
+        CancelInvoke(); // Interrumpimos todos lo invokes de este componente (se deja de disparar)
         Debug.Log("El jugador ha ganado");
     }
 
@@ -122,6 +129,21 @@ public class SGameManager : MonoBehaviour
         {
             PlayerGameOver();
         }
+    }
+
+    // Comprueba si el jugador ha ganado (si ha destruido todos los aliens)
+    public void AlienDestroyed()
+    {
+        defeatedAliens++; // Aumento la cuenta de aliens derrotados
+        if(defeatedAliens >= nFilas * nColumnas)
+        {
+            PlayerWin(); // El jugador gana
+        }
+    }
+
+    public void ResetGame()
+    {
+        // SceneManager.LoadScene("SampleScene");
     }
 
     // Update is called once per frame
