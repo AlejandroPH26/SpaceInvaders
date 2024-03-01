@@ -5,21 +5,37 @@ using UnityEngine;
 public class SGameManager : MonoBehaviour
 {
                                     
-    public SInvader[,] matrizAliens;// lista doble (matriz) de SInvaders - DECLARACIÓN
-    public int nFilas = 5;          // Nº filas de invaders, alto
-    public int nColumnas = 11;      // Nº columnas de invaders, ancho
+    public SInvader[,] matrizAliens;        // lista doble (matriz) de SInvaders - DECLARACIÓN
+    public int nFilas = 5;                  // Nº filas de invaders, alto
+    public int nColumnas = 11;              // Nº columnas de invaders, ancho
 
     // Prefab de alien
     public GameObject alien1Prefab;
     public GameObject alien2Prefab;
     public GameObject alien3Prefab;
 
-    // Game objet padre de los alies (para movimiento)
-    public SInvaderMovement padreAliens;
-    // Distancia entre aliens al spawnear
-    public float distanciaAliens = 1;
+    
+    public SInvaderMovement padreAliens;        // Game objet padre de los alies (para movimiento)
+    public float distanciaAliens = 1;           // Distancia entre aliens al spawnear
+    public float tiempoEntreDisparos = 2f;      // Tiempo entre disparos de los aliens
+    
+    // CICLO DEL JUEGO
+    // Fin de la partida
+    public bool gameOver = false;
+    // Vidas actuales del jugador
+    public int vidas = 3;
+    // Puntuacion actual de jugador
+    public int score = 0;
 
-    public float tiempoEntreDisparos = 2f;
+    // SINGLETON
+    public static SGameManager instance = null;
+
+    private void Awake()
+    {
+        if (instance == null) instance = this;
+        else Destroy(gameObject);
+    }
+
     // Start is called before the first frame update
     void Start()
     {
@@ -83,6 +99,28 @@ public class SGameManager : MonoBehaviour
                     encontrado = true; // He acabado la busqueda
                 }
             }
+        }
+    }
+
+    // Método que se llama cuando perdemos la partida (nos quedamos sin vidas o los aliens llegan abajo)
+    public void PlayerGameOver()
+    {
+        gameOver = true;
+        Debug.Log("El jugador ha perdido");
+    }
+
+    public void PlayerWin()
+    {
+        gameOver = true;
+        Debug.Log("El jugador ha ganado");
+    }
+
+    public void DamagePlayer()
+    {
+        vidas--;
+        if(vidas <= 0)
+        {
+            PlayerGameOver();
         }
     }
 

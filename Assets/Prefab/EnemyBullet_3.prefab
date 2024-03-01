@@ -122,6 +122,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   velocidad: 4
+  bulletExplosion: {fileID: 6604779963576573357, guid: 0e726f5d07aa3114bb743e219319a25b, type: 3}
 --- !u!61 &3949417079497333255
 BoxCollider2D:
   m_ObjectHideFlags: 0

@@ -5,7 +5,9 @@ using UnityEngine;
 public class SPlayerBullet : MonoBehaviour
 {
     public float velocidad = 1;
-    public SPlayer player = null;
+    [HideInInspector]
+    public SPlayer player;
+    public GameObject bulletExplosion;
 
     // Start is called before the first frame update
     void Start()
@@ -24,12 +26,21 @@ public class SPlayerBullet : MonoBehaviour
         if (collision.tag == "Borde") // Choca con un borde
         {
             Destroy(this.gameObject); // Se destruye a bala
+            Instantiate(bulletExplosion, transform.position, Quaternion.identity); // Crea efecto de explosión de bala
         }
 
         else if (collision.tag == "Enemigo") // Choca con el enemigo
         {
             Destroy(this.gameObject); // Se destruye a bala
             Destroy(collision.gameObject);
+            Instantiate(bulletExplosion, transform.position, Quaternion.identity); // Crea efecto de explosión de bala
+        }
+
+        else if (collision.tag == "Barrera") // Choca con un componente barrera
+        {
+            Destroy(this.gameObject); // Se destruye a bala
+            Destroy(collision.gameObject);
+            Instantiate(bulletExplosion, transform.position, Quaternion.identity); // Crea efecto de explosión de bala
         }
     }
 

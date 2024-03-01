@@ -5,6 +5,8 @@ using UnityEngine;
 public class SEnemyBullet : MonoBehaviour
 {
     public float velocidad = 1;
+    public GameObject bulletExplosion;
+
 
     // Start is called before the first frame update
     void Start()
@@ -22,21 +24,31 @@ public class SEnemyBullet : MonoBehaviour
         if (collision.tag == "Borde") // Choca con un borde
         {
             Destroy(this.gameObject); // Se destruye a bala
+            Instantiate(bulletExplosion, transform.position, Quaternion.identity); // Crea efecto de explosión de bala
         }
 
         else if (collision.tag == "BalaJugador") // Choca con la bala del jugador
         {
             Destroy(this.gameObject); // Se destruye a bala
             Destroy(collision.gameObject);
+            Instantiate(bulletExplosion, transform.position, Quaternion.identity); // Crea efecto de explosión de bala
         }
 
         else if (collision.tag == "Jugador") // Choca con el jugador
         {
-            // GameManager.instance.dañojugador p.ej.
+            SGameManager.instance.DamagePlayer();
             Destroy(this.gameObject); // Se destruye a bala
             Destroy(collision.gameObject);
+            Instantiate(bulletExplosion, transform.position, Quaternion.identity); // Crea efecto de explosión de bala
         }
 
-        
+        else if (collision.tag == "Barrera") // Choca con un componente barrera
+        {
+            Destroy(this.gameObject); // Se destruye a bala
+            Destroy(collision.gameObject);
+            Instantiate(bulletExplosion, transform.position, Quaternion.identity); // Crea efecto de explosión de bala
+        }
+
+
     }
 }

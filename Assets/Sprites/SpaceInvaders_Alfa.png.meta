@@ -543,27 +543,6 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SpaceInvaders_Alfa_20
-      rect:
-        serializedVersion: 2
-        x: 46
-        y: 81
-        width: 22
-        height: 16
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 82cd319ff1d62b744a31dec412b9eb01
-      internalID: -480887966
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
       name: SpaceInvaders_Alfa_21
       rect:
         serializedVersion: 2
@@ -710,6 +689,111 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
+    - serializedVersion: 2
+      name: Barrier
+      rect:
+        serializedVersion: 2
+        x: 46
+        y: 81
+        width: 2
+        height: 2
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a0f64c820ebae1242a70a56fe8e1462f
+      internalID: 1852652022
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: barrier1
+      rect:
+        serializedVersion: 2
+        x: 51
+        y: 83
+        width: 2
+        height: 2
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a3130cabdd1e9f44ca7eba964221ad93
+      internalID: 1462946983
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: barrier2
+      rect:
+        serializedVersion: 2
+        x: 60
+        y: 83
+        width: 2
+        height: 2
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a07f50713ccc26c42b849a19c2717d6d
+      internalID: -1264299553
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: barrier3
+      rect:
+        serializedVersion: 2
+        x: 49
+        y: 95
+        width: 2
+        height: 2
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d50b3bd5d40341242a9d33b5ccfa84e5
+      internalID: 1926967618
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: barrier4
+      rect:
+        serializedVersion: 2
+        x: 63
+        y: 95
+        width: 2
+        height: 2
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ea560f3d3fdee9b45be6bd3056d71ecf
+      internalID: 1452229537
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
@@ -728,6 +812,7 @@ TextureImporter:
       Alien_3_1: -1248212535
       Alien_3_2: -1062151257
       Alien_Explosion: 591671084
+      Barrier: 1852652022
       Bullet1_1: 1235875755
       Bullet1_2: 1765417389
       Bullet1_3: -1218110976
@@ -749,6 +834,10 @@ TextureImporter:
       SpaceInvaders_Alfa_21: 1965875098
       SpaceInvaders_Alfa_22: 1941271464
       SpaceInvaders_Alfa_27: 1889199168
+      barrier1: 1462946983
+      barrier2: -1264299553
+      barrier3: 1926967618
+      barrier4: 1452229537
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
