@@ -38,7 +38,7 @@ public class SEnemyBullet : MonoBehaviour
         {
             SGameManager.instance.DamagePlayer();
             Destroy(this.gameObject); // Se destruye a bala
-            Destroy(collision.gameObject);
+            // Destroy(collision.gameObject);
             Instantiate(bulletExplosion, transform.position, Quaternion.identity); // Crea efecto de explosión de bala
         }
 

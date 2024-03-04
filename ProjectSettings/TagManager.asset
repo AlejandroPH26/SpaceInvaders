@@ -10,6 +10,7 @@ TagManager:
   - BalaEnemigo
   - Jugador
   - Enemigo
+  - BarreraGameOver
   layers:
   - Default
   - TransparentFX

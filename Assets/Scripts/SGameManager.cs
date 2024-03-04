@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEditor.SearchService;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -33,6 +34,12 @@ public class SGameManager : MonoBehaviour
 
     // SINGLETON
     public static SGameManager instance = null;
+
+    // Interfaz
+    public TextMeshPro scoreText;
+    public TextMeshPro lifesText;
+    public GameObject spriteVida3;
+    public GameObject spriteVida2;
 
     private void Awake()
     {
@@ -111,31 +118,40 @@ public class SGameManager : MonoBehaviour
     public void PlayerGameOver()
     {
         gameOver = true;
-        CancelInvoke(); // Interrumpimos todos lo invokes de este componente (se deja de disparar)
+        CancelInvoke();                     // Interrumpimos todos lo invokes de este componente (se deja de disparar)
         Debug.Log("El jugador ha perdido");
     }
 
     public void PlayerWin()
     {
         gameOver = true;
-        CancelInvoke(); // Interrumpimos todos lo invokes de este componente (se deja de disparar)
+        CancelInvoke();                     // Interrumpimos todos lo invokes de este componente (se deja de disparar)
         Debug.Log("El jugador ha ganado");
     }
 
     public void DamagePlayer()
     {
         vidas--;
+        UpdateLifeUI();
         if(vidas <= 0)
         {
             PlayerGameOver();
         }
     }
 
+    private void UpdateLifeUI()
+    {
+        lifesText.text = vidas.ToString();                  // Actualiza el texto        
+        spriteVida2.SetActive(vidas >= 2);                  // Actualiza los sprites de las vidas
+        spriteVida3.SetActive(vidas >= 3);
+
+    }
+
     // Comprueba si el jugador ha ganado (si ha destruido todos los aliens)
     public void AlienDestroyed()
     {
-        defeatedAliens++; // Aumento la cuenta de aliens derrotados
-        if(defeatedAliens >= nFilas * nColumnas)
+        defeatedAliens++;                               // Aumento la cuenta de aliens derrotados
+        if(defeatedAliens >= nFilas * nColumnas)        // Si ha derrotado a todos los aliens
         {
             PlayerWin(); // El jugador gana
         }
@@ -143,7 +159,15 @@ public class SGameManager : MonoBehaviour
 
     public void ResetGame()
     {
-        // SceneManager.LoadScene("SampleScene");
+        SceneManager.LoadScene("SampleScene");
+    }
+
+    // Suma points puntos a la puntuación
+    public void AddScore(int points)
+    {
+        score += points;
+        // Actaliza texto puntos
+        scoreText.text = "SCORE\n" + score.ToString();
     }
 
     // Update is called once per frame

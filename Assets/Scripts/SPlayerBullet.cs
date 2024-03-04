@@ -33,7 +33,7 @@ public class SPlayerBullet : MonoBehaviour
         {
             Destroy(this.gameObject); // Se destruye a bala
             Destroy(collision.gameObject); // Destruyo el aien
-            SGameManager.instance.AlienDestroyed();
+            SGameManager.instance.AlienDestroyed(); // Aviso al gamemanager de que se ha destruido un alien
         }
 
         else if (collision.tag == "Barrera") // Choca con un componente barrera

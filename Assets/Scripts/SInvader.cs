@@ -12,6 +12,8 @@ public class SInvader : MonoBehaviour
 
     public float bulletSpawnYOffset = -0.65f;
 
+    public int puntosGanados = 10;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -37,6 +39,11 @@ public class SInvader : MonoBehaviour
             // Llamar a SwitchDirection para que se gire el padre
             padre.SwitchDirection();
         }
+
+        else if(collision.gameObject.layer == LayerMask.NameToLayer("GameOverBarrier"))
+        {
+            SGameManager.instance.PlayerGameOver();
+        }
     }
 
     private void OnApplicationQuit() // Se llama al cerrar la aplicación, antes del OnDestroy
@@ -50,6 +57,8 @@ public class SInvader : MonoBehaviour
         {
             GameObject particula = Instantiate(particulaMuerte, transform.position, Quaternion.identity);
             // Destroy(particula, 0.2f); Destruimos las particulas dentro de 0.2 segundos
+            // Suma puntos
+            SGameManager.instance.AddScore(puntosGanados);
         }
     }
 }

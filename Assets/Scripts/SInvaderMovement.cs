@@ -11,17 +11,22 @@ public class SInvaderMovement : MonoBehaviour
     public bool canSwitch = true;   // Bool que indica si puede girarse
     public float switchDelay = 0.5f;// Tiempo que debe pasar despues de girar, para poder volver a hacerlo
 
+    private SGameManager gm;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        gm = SGameManager.instance;
     }
 
     // Update is called once per frame
     void Update()
     {
-        Movement();
+        if (!gm.gameOver)
+        {
+            Movement();
+        }
+        
     }
 
     private void Movement()
