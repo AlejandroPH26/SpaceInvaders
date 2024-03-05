@@ -12,6 +12,9 @@ public class SGameManager : MonoBehaviour
     public int nFilas = 5;                  // Nº filas de invaders, alto
     public int nColumnas = 11;              // Nº columnas de invaders, ancho
 
+    // Jugador
+    private SPlayer player;
+
     // Prefab de alien
     public GameObject alien1Prefab;
     public GameObject alien2Prefab;
@@ -50,6 +53,9 @@ public class SGameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        // Busco al jugador y lo guardo
+        player = FindObjectOfType<SPlayer>();
+
         // Decimos que matrizAliens es una nueva matriz de SInvaders de nColumnas x nFilas
         // - INICIALIZACIÓN
         matrizAliens = new SInvader[nColumnas, nFilas]; 
@@ -133,10 +139,18 @@ public class SGameManager : MonoBehaviour
     {
         vidas--;
         UpdateLifeUI();
+        // Animación de daño de jugador
+        player.PlayerDamaged();
+        Invoke("UnlockDamagedPlayer", 1.5f);
         if(vidas <= 0)
         {
             PlayerGameOver();
         }
+    }
+
+    private void UnlockDamagedPlayer()
+    {
+        player.PlayerReset();
     }
 
     private void UpdateLifeUI()

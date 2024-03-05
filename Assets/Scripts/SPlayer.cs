@@ -6,9 +6,9 @@ using UnityEngine;
 public class SPlayer : MonoBehaviour
 {
     [Tooltip("Prefab de la bala")]
-    public GameObject prefabBullet;                 // Prefab de la bala
+    public GameObject prefabBullet;                                         // Prefab de la bala
     [Tooltip("Velocidad del jugador en unidades de unity / jugador")]
-    public float velocidad = 2;                     // Velocidad del jugador
+    public float velocidad = 2;                                             // Velocidad del jugador
     public KeyCode shootKey = KeyCode.Space;
     public KeyCode moveLeftKey = KeyCode.A;
     public KeyCode moveRightKey = KeyCode.D;
@@ -16,20 +16,35 @@ public class SPlayer : MonoBehaviour
     public Transform posDisparo;
 
     public bool canShoot = true;
+    private bool canMove = true;
 
     public float limiteIzquierdo = -6.22f;
     public float limiteDerecho = 6.11f;
 
+    // Animator del jugador
+    public Animator pAnimator;
+
+    private Vector3 posInicial;
+
     // Start is called before the first frame update
     void Start()
     {
-        
+        posInicial = transform.position;
+        pAnimator = GetComponent<Animator>();
+       
     }
 
     // Update is called once per frame
     void Update()
     {
+        if (!canMove)
+        {
+            InputPlayer();
+        }
+    }
 
+    private void InputPlayer()
+    {
         if (canShoot && Input.GetKeyDown(shootKey))
         {
             Shoot();
@@ -44,7 +59,6 @@ public class SPlayer : MonoBehaviour
             transform.position += new Vector3(velocidad, 0, 0) * Time.deltaTime;
             LimiteJugador();
         }
-
     }
 
     private void Shoot()
@@ -70,5 +84,18 @@ public class SPlayer : MonoBehaviour
         }
 
         gameObject.transform.position = posicionActual;
+    }
+
+    public void PlayerDamaged()
+    {
+        pAnimator.Play("Anim_PlayerDeath");
+        canMove = false;
+    }
+
+    public void PlayerReset()
+    {
+        pAnimator.Play("Anim_PlayerIdle");
+        canMove = true;
+        transform.position = posInicial;
     }
 }
