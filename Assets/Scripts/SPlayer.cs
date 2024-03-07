@@ -37,7 +37,7 @@ public class SPlayer : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (!canMove)
+        if (canMove)
         {
             InputPlayer();
         }
@@ -97,5 +97,15 @@ public class SPlayer : MonoBehaviour
         pAnimator.Play("Anim_PlayerIdle");
         canMove = true;
         transform.position = posInicial;
+    }
+
+    public bool GetCanMove()
+    {
+        return canMove;
+    }
+
+    public void SetCanMove(bool b)
+    {
+        canMove = b;
     }
 }

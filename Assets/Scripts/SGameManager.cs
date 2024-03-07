@@ -35,6 +35,8 @@ public class SGameManager : MonoBehaviour
     // Nº de aliens derrotados
     private int defeatedAliens = 0;
 
+    public float playerDamageDelay = 1.5f;
+
     // SINGLETON
     public static SGameManager instance = null;
 
@@ -137,20 +139,27 @@ public class SGameManager : MonoBehaviour
 
     public void DamagePlayer()
     {
-        vidas--;
-        UpdateLifeUI();
-        // Animación de daño de jugador
-        player.PlayerDamaged();
-        Invoke("UnlockDamagedPlayer", 1.5f);
-        if(vidas <= 0)
+        if(!gameOver && player.GetCanMove())
         {
-            PlayerGameOver();
+            vidas--;
+            UpdateLifeUI();
+            // Animación de daño de jugador
+            player.PlayerDamaged();
+            padreAliens.canMove = false; // Boqueo el movimiento de los aliens
+            SetInvadersAnim(false);
+            Invoke("UnlockDamagedPlayer", 1.5f);
+            if(vidas <= 0)
+            {
+                PlayerGameOver();
+            }
         }
     }
 
     private void UnlockDamagedPlayer()
     {
-        player.PlayerReset();
+        player.PlayerReset();           // Desbloqueo el movimiento del jugador
+        padreAliens.canMove = true;     // Desbloqueo el movimiento de los aliens
+        SetInvadersAnim(true);
     }
 
     private void UpdateLifeUI()
@@ -179,9 +188,25 @@ public class SGameManager : MonoBehaviour
     // Suma points puntos a la puntuación
     public void AddScore(int points)
     {
-        score += points;
-        // Actaliza texto puntos
-        scoreText.text = "SCORE\n" + score.ToString();
+        score += points;      
+        scoreText.text = "SCORE\n" + score.ToString(); // Actaliza texto puntos
+
+    }
+
+    public void SetInvadersAnim(bool movement)
+    {
+       for(int i = 0; i < nColumnas; i++)
+        {
+            for(int j = 0; j < nFilas; j++)
+            {
+                if (matrizAliens[i, j] != null) // Comprobamos que existe
+                {
+                    // Asignamos la animacion que toque
+                    if(movement) matrizAliens[i, j].MovementAnimation();
+                    else matrizAliens[i, j].StunAnimation();
+                }
+            }
+        }
     }
 
     // Update is called once per frame

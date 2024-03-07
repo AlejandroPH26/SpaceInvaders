@@ -1512,10 +1512,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5cd202c7cf5481b4f8600a7d1ef42cd3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 0.5
+  speed: 0.2
   despAbajo: 1
   canSwitch: 1
   switchDelay: 0.5
+  canMove: 1
+  moveStunTime: 0.5
 --- !u!1 &1354223455
 GameObject:
   m_ObjectHideFlags: 0
@@ -1862,6 +1864,7 @@ MonoBehaviour:
   gameOver: 0
   vidas: 3
   score: 0
+  playerDamageDelay: 1.5
   scoreText: {fileID: 336380832}
   lifesText: {fileID: 767401755}
   spriteVida3: {fileID: 981060453}

@@ -4,14 +4,17 @@ using UnityEngine;
 
 public class SInvaderMovement : MonoBehaviour
 {
-    public float speed = 1f;        // Velocidad de movimiento en X
-    public float despAbajo = 1f;    // Distancia que baja al cambiar de dirección
+    public float speed = 1f;            // Velocidad de movimiento en X
+    public float despAbajo = 1f;        // Distancia que baja al cambiar de dirección
     private float dir = 1;
 
-    public bool canSwitch = true;   // Bool que indica si puede girarse
-    public float switchDelay = 0.5f;// Tiempo que debe pasar despues de girar, para poder volver a hacerlo
+    public bool canSwitch = true;       // Bool que indica si puede girarse
+    public float switchDelay = 0.5f;    // Tiempo que debe pasar despues de girar, para poder volver a hacerlo
+    public bool canMove = true;         // Bool que indica si puede moverse
+    public float moveStunTime = 0.5f;   // Tiempo que se paran los aliens al destruirse uno
 
-    private SGameManager gm;
+    private SGameManager gm; // Referencia al gameManager
+
 
     // Start is called before the first frame update
     void Start()
@@ -22,7 +25,7 @@ public class SInvaderMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (!gm.gameOver)
+        if (!gm.gameOver && canMove)
         {
             Movement();
         }
@@ -48,6 +51,19 @@ public class SInvaderMovement : MonoBehaviour
     public void SwitchEnable()
     {
         canSwitch = true;
+    }
+
+    private void EnableMovement()
+    {
+        canMove = true;
+        gm.SetInvadersAnim(true);
+    }
+
+    public void AlienDestroyedStun() // Método que se llama cuando se destruye un alien y que para su movimiento un tiempo
+    {
+        canMove = false;                        // Paramos el movimiento
+        gm.SetInvadersAnim(false);              // Poner animación stun
+        Invoke("EnableMovement", moveStunTime); // Reactivamos el movimiento tras un tiempo
     }
 }
 
