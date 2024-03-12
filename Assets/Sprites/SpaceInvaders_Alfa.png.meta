@@ -543,7 +543,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SpaceInvaders_Alfa_21
+      name: OvniDestruido
       rect:
         serializedVersion: 2
         x: 20
@@ -564,7 +564,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SpaceInvaders_Alfa_22
+      name: Ovni
       rect:
         serializedVersion: 2
         x: 1
@@ -698,7 +698,7 @@ TextureImporter:
         width: 2
         height: 2
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -719,7 +719,7 @@ TextureImporter:
         width: 2
         height: 2
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -740,7 +740,7 @@ TextureImporter:
         width: 2
         height: 2
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -761,7 +761,7 @@ TextureImporter:
         width: 2
         height: 2
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -782,7 +782,7 @@ TextureImporter:
         width: 2
         height: 2
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -826,13 +826,13 @@ TextureImporter:
       Bullet3_3: -1820781825
       Bullet3_4: 1965875098
       BulletExplosion: 1941271464
+      Ovni: 1788092096
+      OvniDestruido: 392115784
       Player_1: 759403865
       Player_2: 1889199168
       Player_3: 951373626
       Player_Bullet: 821122190
       SpaceInvaders_Alfa_20: -1820781825
-      SpaceInvaders_Alfa_21: 1965875098
-      SpaceInvaders_Alfa_22: 1941271464
       SpaceInvaders_Alfa_27: 1889199168
       barrier1: 1462946983
       barrier2: -1264299553

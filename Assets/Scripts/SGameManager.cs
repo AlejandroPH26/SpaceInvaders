@@ -34,8 +34,10 @@ public class SGameManager : MonoBehaviour
     public int score = 0;
     // Nº de aliens derrotados
     private int defeatedAliens = 0;
-
+    // Tiempo que dura la animación de daño del jugador
     public float playerDamageDelay = 1.5f;
+    // Multiplicador que aumenta la velocidad de los aliens
+    public float incrVel = 3;
 
     // SINGLETON
     public static SGameManager instance = null;
@@ -45,6 +47,12 @@ public class SGameManager : MonoBehaviour
     public TextMeshPro lifesText;
     public GameObject spriteVida3;
     public GameObject spriteVida2;
+
+    // OVNI
+    public GameObject prefabOvni;
+    public Transform spawnIzqOvni;
+    public Transform spawnDerOvni;
+    public float spawnOvniTime = 15f;
 
     private void Awake()
     {
@@ -64,6 +72,7 @@ public class SGameManager : MonoBehaviour
         SpawnAliens();
 
         InvokeRepeating("SelectAlienShoot", tiempoEntreDisparos, tiempoEntreDisparos);      
+        InvokeRepeating("SpawnOvni", spawnOvniTime, spawnOvniTime);
     }
 
     void SpawnAliens()
@@ -92,6 +101,23 @@ public class SGameManager : MonoBehaviour
         }
         
 
+    }
+
+    void SpawnOvni()
+    {
+        // Elegir una diercción aleatoria
+        int random = Random.Range(0, 2); // Entre 0 y 1
+     
+        if(random == 0) // Si sale 0 lo colocamos a la izquierda
+        {
+            // Crearlo y Ponerle la dirección
+            Instantiate(prefabOvni, spawnIzqOvni).GetComponent<SOvni>().dir = 1;
+        }
+        else if(random == 1) // Si sale 1 lo colocamos a la derecha
+        {
+            Instantiate(prefabOvni, spawnDerOvni).GetComponent<SOvni>().dir = -1;
+        }
+        
     }
 
     // Busca el alien más cercano al jugador en una columna aleatoria y le dice que dispare
@@ -174,6 +200,11 @@ public class SGameManager : MonoBehaviour
     public void AlienDestroyed()
     {
         defeatedAliens++;                               // Aumento la cuenta de aliens derrotados
+
+        // Actualizar la velocidad de los aliens según cuantos quedan
+        // Suma incVelocidad / aliensTotales
+        padreAliens.speed += (incrVel / (float)(nFilas * nColumnas));
+
         if(defeatedAliens >= nFilas * nColumnas)        // Si ha derrotado a todos los aliens
         {
             PlayerWin(); // El jugador gana

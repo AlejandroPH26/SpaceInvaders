@@ -1514,6 +1514,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 0.2
   despAbajo: 1
+  originalSpeed: 3
   canSwitch: 1
   switchDelay: 0.5
   canMove: 1
@@ -1865,10 +1866,15 @@ MonoBehaviour:
   vidas: 3
   score: 0
   playerDamageDelay: 1.5
+  incrVel: 3
   scoreText: {fileID: 336380832}
   lifesText: {fileID: 767401755}
   spriteVida3: {fileID: 981060453}
   spriteVida2: {fileID: 131337203}
+  prefabOvni: {fileID: 1147839043057924724, guid: f53d9561ebfc8f94d932790008606f96, type: 3}
+  spawnIzqOvni: {fileID: 1640088298}
+  spawnDerOvni: {fileID: 2107865380}
+  spawnOvniTime: 20
 --- !u!4 &1508404324
 Transform:
   m_ObjectHideFlags: 0
@@ -1989,6 +1995,68 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!1 &1640088297
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1640088298}
+  m_Layer: 0
+  m_Name: SpawnIzquierdaOvni
+  m_TagString: Untagged
+  m_Icon: {fileID: 7174288486110832750, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1640088298
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1640088297}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -7.49, y: 7.42, z: -0.087170795}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &2107865379
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2107865380}
+  m_Layer: 0
+  m_Name: 'SpawnDerechaOvni '
+  m_TagString: Untagged
+  m_Icon: {fileID: -5397416234189338067, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2107865380
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2107865379}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 7.52, y: 7.42, z: -0.087170795}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
@@ -2008,3 +2076,5 @@ SceneRoots:
   - {fileID: 1629586255}
   - {fileID: 336380834}
   - {fileID: 816707277}
+  - {fileID: 1640088298}
+  - {fileID: 2107865380}
