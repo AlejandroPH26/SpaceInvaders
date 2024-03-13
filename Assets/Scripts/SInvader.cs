@@ -14,6 +14,7 @@ public class SInvader : MonoBehaviour
     public SInvaderMovement padre;
 
     public GameObject invaderBullet;
+    public AudioClip sfxInvaderDeath;
 
     public float bulletSpawnYOffset = -0.65f;
 
@@ -62,6 +63,7 @@ public class SInvader : MonoBehaviour
     {
         if (!isQuitting) 
         {
+            SSoundManager.instance.PlaySFX(sfxInvaderDeath);
             GameObject particula = Instantiate(particulaMuerte, transform.position, Quaternion.identity);
             // Destroy(particula, 0.2f); Destruimos las particulas dentro de 0.2 segundos
             // Stun a los aliens (movimiento)

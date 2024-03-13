@@ -47,12 +47,14 @@ public class SGameManager : MonoBehaviour
     public TextMeshPro lifesText;
     public GameObject spriteVida3;
     public GameObject spriteVida2;
+    public TextMeshPro gameOverTxt;
 
     // OVNI
     public GameObject prefabOvni;
     public Transform spawnIzqOvni;
     public Transform spawnDerOvni;
     public float spawnOvniTime = 15f;
+    public AudioClip waveOvni;
 
     private void Awake()
     {
@@ -70,6 +72,7 @@ public class SGameManager : MonoBehaviour
         // - INICIALIZACIÓN
         matrizAliens = new SInvader[nColumnas, nFilas]; 
         SpawnAliens();
+        gameOverTxt.gameObject.SetActive(false);
 
         InvokeRepeating("SelectAlienShoot", tiempoEntreDisparos, tiempoEntreDisparos);      
         InvokeRepeating("SpawnOvni", spawnOvniTime, spawnOvniTime);
@@ -105,6 +108,7 @@ public class SGameManager : MonoBehaviour
 
     void SpawnOvni()
     {
+        SSoundManager.instance.PlaySFX(waveOvni);
         // Elegir una diercción aleatoria
         int random = Random.Range(0, 2); // Entre 0 y 1
      
@@ -152,6 +156,7 @@ public class SGameManager : MonoBehaviour
     public void PlayerGameOver()
     {
         gameOver = true;
+        gameOverTxt.gameObject.SetActive(true);
         CancelInvoke();                     // Interrumpimos todos lo invokes de este componente (se deja de disparar)
         Debug.Log("El jugador ha perdido");
     }

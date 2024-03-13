@@ -165,9 +165,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fb2953054572de34680653079c515f8c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  tipo: 0
   particulaMuerte: {fileID: 8377549944096713532, guid: 0ae6b33f2bee0a94ea16588f666f6a38, type: 3}
   isQuitting: 0
   padre: {fileID: 0}
   invaderBullet: {fileID: 660438246643670405, guid: f66cdb0951fcaa846b90371321620dbb, type: 3}
+  sfxInvaderDeath: {fileID: 8300000, guid: e8ae839ce3cfcd74eb3202fb9fbf5271, type: 3}
   bulletSpawnYOffset: -0.65
   puntosGanados: 30

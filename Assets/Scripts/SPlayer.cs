@@ -23,7 +23,8 @@ public class SPlayer : MonoBehaviour
 
     // Animator del jugador
     public Animator pAnimator;
-
+    public AudioClip sfxShoot;
+    public AudioClip sfxDeath;
     private Vector3 posInicial;
 
     // Start is called before the first frame update
@@ -64,6 +65,7 @@ public class SPlayer : MonoBehaviour
     private void Shoot()
     {
         Debug.Log("Disparo");
+        SSoundManager.instance.PlaySFX(sfxShoot);
         GameObject aux = Instantiate(prefabBullet, posDisparo.position, Quaternion.identity);
         SPlayerBullet bullet = aux.GetComponent<SPlayerBullet>();
         bullet.player = this;
@@ -88,6 +90,7 @@ public class SPlayer : MonoBehaviour
 
     public void PlayerDamaged()
     {
+        SSoundManager.instance.PlaySFX(sfxDeath);
         pAnimator.Play("Anim_PlayerDeath");
         canMove = false;
     }

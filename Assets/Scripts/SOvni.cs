@@ -20,7 +20,7 @@ public class SOvni : MonoBehaviour
     void Update()
     {
         // Desplazamiento horizontal
-        transform.position += new Vector3(speed, 0, 0) * Time.deltaTime;
+        transform.position += new Vector3(speed, 0, 0) * dir * Time.deltaTime;
     }
 
     private void OnTriggerExit2D (Collider2D collision)
