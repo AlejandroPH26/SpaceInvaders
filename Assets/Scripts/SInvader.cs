@@ -52,6 +52,21 @@ public class SInvader : MonoBehaviour
         {
             SGameManager.instance.PlayerGameOver();
         }
+
+        else if (collision.tag == "BalaJugador") // Choca con el enemigo
+        {
+            SGameManager.instance.AlienDestroyed(); // Aviso al gamemanager de que se ha destruido un alien
+
+            SSoundManager.instance.PlaySFX(sfxInvaderDeath);
+            GameObject particula = Instantiate(particulaMuerte, transform.position, Quaternion.identity);
+            // Destroy(particula, 0.2f); Destruimos las particulas dentro de 0.2 segundos
+            // Stun a los aliens (movimiento)
+            padre.AlienDestroyedStun();
+            // Suma puntos
+            SGameManager.instance.AddScore(puntosGanados);
+            Destroy(collision.gameObject); // Destruyo la bala
+            Destroy(this.gameObject); // Se destruye a alien
+        }
     }
 
     private void OnApplicationQuit() // Se llama al cerrar la aplicación, antes del OnDestroy
@@ -63,13 +78,7 @@ public class SInvader : MonoBehaviour
     {
         if (!isQuitting) 
         {
-            SSoundManager.instance.PlaySFX(sfxInvaderDeath);
-            GameObject particula = Instantiate(particulaMuerte, transform.position, Quaternion.identity);
-            // Destroy(particula, 0.2f); Destruimos las particulas dentro de 0.2 segundos
-            // Stun a los aliens (movimiento)
-            padre.AlienDestroyedStun();
-            // Suma puntos
-            SGameManager.instance.AddScore(puntosGanados);
+            
         }
     }
 

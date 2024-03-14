@@ -44,6 +44,7 @@ public class SGameManager : MonoBehaviour
 
     // Interfaz
     public TextMeshPro scoreText;
+    public TextMeshPro highScoreText;
     public TextMeshPro lifesText;
     public GameObject spriteVida3;
     public GameObject spriteVida2;
@@ -55,6 +56,8 @@ public class SGameManager : MonoBehaviour
     public Transform spawnDerOvni;
     public float spawnOvniTime = 15f;
     public AudioClip waveOvni;
+
+    public int highScore = 0;
 
     private void Awake()
     {
@@ -76,6 +79,9 @@ public class SGameManager : MonoBehaviour
 
         InvokeRepeating("SelectAlienShoot", tiempoEntreDisparos, tiempoEntreDisparos);      
         InvokeRepeating("SpawnOvni", spawnOvniTime, spawnOvniTime);
+
+        highScore = PlayerPrefs.GetInt("HIGH-SCORE"); // saco a puntuación maxima guardada en el archivo playerprefs
+        highScoreText.text = "HI-SCORE\n" + highScore.ToString();
     }
 
     void SpawnAliens()
@@ -159,6 +165,7 @@ public class SGameManager : MonoBehaviour
         gameOverTxt.gameObject.SetActive(true);
         CancelInvoke();                     // Interrumpimos todos lo invokes de este componente (se deja de disparar)
         Debug.Log("El jugador ha perdido");
+        Invoke("ResetGame", 2); // Reinicio la partida en 2 segundos
     }
 
     public void PlayerWin()
@@ -166,6 +173,7 @@ public class SGameManager : MonoBehaviour
         gameOver = true;
         CancelInvoke();                     // Interrumpimos todos lo invokes de este componente (se deja de disparar)
         Debug.Log("El jugador ha ganado");
+        Invoke("ResetGame", 4); // Reinicio la partida en 4 segundos
     }
 
     public void DamagePlayer()
@@ -218,7 +226,16 @@ public class SGameManager : MonoBehaviour
 
     public void ResetGame()
     {
+        UpdateHighScore();
         SceneManager.LoadScene("SampleScene");
+    }
+
+    public void UpdateHighScore()
+    {
+        if (score >= highScore) // Si mi puntuación es mayor que la maxima
+        {
+            PlayerPrefs.SetInt("HIGH-SCORE", score); // Guarda la puntuación
+        }
     }
 
     // Suma points puntos a la puntuación
@@ -245,9 +262,9 @@ public class SGameManager : MonoBehaviour
         }
     }
 
-    // Update is called once per frame
-    void Update()
+    private void OnApplicationQuit() // Si cerramos la aplicación
     {
-        
+        UpdateHighScore() ;
     }
+
 }

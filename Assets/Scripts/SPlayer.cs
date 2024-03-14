@@ -62,6 +62,15 @@ public class SPlayer : MonoBehaviour
         }
     }
 
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if(collision.tag == "Enemigo")
+        {
+            SGameManager.instance.PlayerGameOver();
+            PlayerDamaged();
+        }
+    }
+
     private void Shoot()
     {
         Debug.Log("Disparo");
