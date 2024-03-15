@@ -24,6 +24,9 @@ public class SGameManager : MonoBehaviour
     public SInvaderMovement padreAliens;        // Game objet padre de los alies (para movimiento)
     public float distanciaAliens = 1;           // Distancia entre aliens al spawnear
     public float tiempoEntreDisparos = 2f;      // Tiempo entre disparos de los aliens
+    public AudioClip soundAlienMove;
+    public float tMaxSound = 3f;
+    public float tMinSound = 0.5f;
     
     // CICLO DEL JUEGO
     // Fin de la partida
@@ -82,6 +85,8 @@ public class SGameManager : MonoBehaviour
 
         highScore = PlayerPrefs.GetInt("HIGH-SCORE"); // saco a puntuación maxima guardada en el archivo playerprefs
         highScoreText.text = "HI-SCORE\n" + highScore.ToString();
+
+        SonidoMovimientoAliens();
     }
 
     void SpawnAliens()
@@ -222,6 +227,8 @@ public class SGameManager : MonoBehaviour
         {
             PlayerWin(); // El jugador gana
         }
+
+        
     }
 
     public void ResetGame()
@@ -260,6 +267,21 @@ public class SGameManager : MonoBehaviour
                 }
             }
         }
+    }
+
+    public void SonidoMovimientoAliens()
+    {
+        SSoundManager.instance.PlaySFX(soundAlienMove);
+       // if(defeatedAliens <= (matrizAliens.Length / 2))
+       //{
+       Invoke("SonidoMovimientoAliens", (tMaxSound - (((float)defeatedAliens / (float) matrizAliens.Length) * (tMaxSound - tMinSound))));
+       //Debug.Log("Tiempo para siguiente sonido: " + (tMaxSound - (((float)defeatedAliens / (float)matrizAliens.Length) * (tMaxSound - tMinSound))).ToString());
+       // }
+    }
+
+    public void Update()
+    {
+
     }
 
     private void OnApplicationQuit() // Si cerramos la aplicación

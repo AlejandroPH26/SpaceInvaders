@@ -121,7 +121,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a0a017b716b36d844b0303db5629f92d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  velocidad: 5
+  velocidad: 10
   bulletExplosion: {fileID: 6604779963576573357, guid: 0e726f5d07aa3114bb743e219319a25b, type: 3}
 --- !u!61 &3949417079497333255
 BoxCollider2D:
