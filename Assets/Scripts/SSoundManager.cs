@@ -8,6 +8,7 @@ public class SSoundManager : MonoBehaviour
     [SerializeField]
     private AudioSource sfxSource;
     private AudioSource musicSource;
+    
 
     private void Awake()
     {
@@ -22,6 +23,11 @@ public class SSoundManager : MonoBehaviour
     public void PlaySFX(AudioClip clip)
     {
         sfxSource.PlayOneShot(clip);
+    }
+
+    public void PlayMusic(AudioClip clip)
+    {
+        
     }
 
     // Start is called before the first frame update

@@ -12,11 +12,13 @@ public class SMenuPausaManager : MonoBehaviour
     public KeyCode exitKey = KeyCode.P;
     public GameObject pauseMenu;
 
-    public bool isPaused;
+    public static bool isPaused;
 
     // Start is called before the first frame update
     void Start()
     {
+        botonContinuar.onClick.AddListener(ContinuarJuego);
+        botonSalir.onClick.AddListener(SalirDelJuego);
         // Desactivar el menú de pausa al iniciar
         pauseMenu.SetActive(false);
     }
@@ -38,7 +40,7 @@ public class SMenuPausaManager : MonoBehaviour
                 MostrarMenuPausa();
             }
 
-            Debug.Log("Se ha pulsado la tecla");
+            
         }
     }
 
@@ -69,5 +71,6 @@ public class SMenuPausaManager : MonoBehaviour
     public void SalirDelJuego()
     {
         Application.Quit();
+        Debug.Log("Se ha pulsado la tecla Salir");
     }
 }

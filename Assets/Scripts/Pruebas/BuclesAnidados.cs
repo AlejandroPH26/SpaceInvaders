@@ -6,8 +6,6 @@ public class BuclesAnidados : MonoBehaviour
 {
     public int[,] listaNumeros;
 
-    int n = 1;
-
     // Start is called before the first frame update
     void Start()
     {

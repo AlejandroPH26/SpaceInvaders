@@ -38,9 +38,12 @@ public class SPlayer : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (canMove)
+        if(!SMenuPausaManager.isPaused)
         {
-            InputPlayer();
+            if (canMove)
+            {
+                InputPlayer();
+            }
         }
     }
 
